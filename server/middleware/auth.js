@@ -1,4 +1,4 @@
-import clerkClient from '@clerk/express'
+import {clerkClient} from '@clerk/express'
 
 export const protectAdmin = async (req, res, next0) => {
     try {
@@ -11,8 +11,8 @@ export const protectAdmin = async (req, res, next0) => {
                 success: false, message: "not authorized"
             })
         }
-        
+        next();
     } catch (error) {
-        
+        return  res.json({success: false, message:"not authorized" })
     }
 }
